@@ -23,12 +23,12 @@ public class AnvilListener implements Listener {
                 && event.getWhoClicked().hasPermission("coloranvil.use")) {
             ItemMeta meta = Objects.requireNonNull(event.getCurrentItem()).getItemMeta();
             if (meta == null) { return; }
-            Player p = (Player) event.getWhoClicked();
             String oldName = meta.getDisplayName();
-            String newName = ChatColor.translateAlternateColorCodes('&', oldName);
-            meta.setDisplayName(newName);
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', "&7[&9SH Warning&7]&b Renaming colored item names leads to unintended complications."));
-            event.getCurrentItem().setItemMeta(meta);
+            if (oldName.contains("&")) {
+                String newName = ChatColor.translateAlternateColorCodes('&', oldName);
+                meta.setDisplayName(newName);
+                event.getCurrentItem().setItemMeta(meta);
+            }
         }
     }
 

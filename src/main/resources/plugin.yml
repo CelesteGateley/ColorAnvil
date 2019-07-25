@@ -1,0 +1,4 @@
+name: ColorAnvil
+version: ${project.version}
+main: xyz.fluxinc.coloranvil.ColorAnvil
+api-version: 1.13
